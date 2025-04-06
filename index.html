@@ -14,12 +14,10 @@
 </head>
 
 <body>
-    <script>
-        // Redirect to the signup page only once
-        if (!sessionStorage.getItem('redirected')) {
-            sessionStorage.setItem('redirected', 'true');
+    <script>  // Redirect to signup page on website load
+        window.onload = function() {
             window.location.href = "signup.html";
-        }
+        };
     </script>
     <!-- Header -->
     <header>
