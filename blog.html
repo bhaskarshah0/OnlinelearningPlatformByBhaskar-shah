@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - BhaskarHub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">BhaskarHub</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="#" id="logoutButton" class="cta-button">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Blog Section -->
+    <section class="blog">
+        <div class="blog-header">
+            <h2>Latest Articles</h2>
+            <div class="blog-filters">
+                <select>
+                    <option>All Categories</option>
+                    <option>Development</option>
+                    <option>Design</option>
+                    <option>Data Science</option>
+                    <option>Cloud Computing</option>
+                    <option>AI/ML</option>
+                    <option>Cybersecurity</option>
+                </select>
+                <select>
+                    <option>Sort By</option>
+                    <option>Newest First</option>
+                    <option>Oldest First</option>
+                    <option>Most Popular</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Blog Card 1 -->
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80" alt="Data Science">
+                <div class="blog-content">
+                    <span class="blog-category data-science">Data Science</span>
+                    <h3>Top 10 Data Science Tools</h3>
+                    <p>Discover the most popular tools used by data scientists to analyze, visualize, and interpret data effectively.</p>
+                    <div class="blog-meta">
+                        <span><i class="fas fa-calendar-alt"></i> Oct 10, 2023</span>
+                        <span><i class="fas fa-clock"></i> 5 min read</span>
+                    </div>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Programming">
+                <div class="blog-content">
+                    <span class="blog-category development">Development</span>
+                    <h3>How to Master Python in 30 Days</h3>
+                    <p>Learn the best strategies and resources to become proficient in Python programming within a month.</p>
+                    <div class="blog-meta">
+                        <span><i class="fas fa-calendar-alt"></i> Oct 5, 2023</span>
+                        <span><i class="fas fa-clock"></i> 7 min read</span>
+                    </div>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Add more blog cards here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 BhaskarHub. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

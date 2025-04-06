@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
+    <title>Login - BhaskarHub</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #e67e22;
+            animation: logoBounce 2s infinite;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e67e22;
+        }
+
+        /* Button Styles */
+        .cta-button {
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Login Section Styles */
+        .login {
+            max-width: 450px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .login h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #e67e22;
+        }
+
+        .login-options {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .login-options a {
+            color: #e67e22;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .login-options a:hover {
+            text-decoration: underline;
+        }
+
+        .login-options p {
+            margin-top: 0.5rem;
+        }
+
+        /* Error Message Styles */
+        .error-message {
+            color: #e74c3c;
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            min-height: 1.2rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            margin-top: 1rem; /* Reduced margin-top to remove extra space */
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .logo {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .login {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login {
+                padding: 1.2rem;
+            }
+
+            .form-group input {
+                padding: 0.7rem;
+            }
+        }
+
+        /* Animation Styles */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button-hover {
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .button-hover:hover {
+            transform: scale(1.05);
+            background-color: #d35400;
+        }
+
+        /* Forgot Password Animation */
+        .fade-in-message {
+            animation: fadeInMessage 0.5s ease-in-out;
+        }
+
+        @keyframes fadeInMessage {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .forgot-password-hover {
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+
+        .forgot-password-hover:hover {
+            color: #d35400;
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .modal-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .modal-actions button {
+            flex: 1;
+            margin: 0 0.5rem;
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #e67e22;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1rem;
+            z-index: 1001;
+            opacity: 0;
+        }
+
+        .fade-in-message {
+            animation: fadeInMessage 0.5s forwards;
+        }
+
+        .fade-out-message {
+            animation: fadeOutMessage 0.5s forwards;
+        }
+
+        @keyframes fadeOutMessage {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Popup Modal Styles */
+        .popup-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, #ffffff, #f9f9f9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .popup-modal.show {
+            visibility: visible;
+        }
+
+        .popup-modal h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .popup-modal p {
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            color: #555;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .popup-modal .close-button {
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .popup-modal .close-button:hover {
+            background: linear-gradient(135deg, #d35400, #e67e22);
+            transform: scale(1.05);
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Slide-In Animation */
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -60%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Logo Animation */
+        @keyframes logoBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('errorMessage');
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+                const submitButton = loginForm.querySelector('.cta-button');
+
+                errorMessage.textContent = '';
+
+                if (!validateEmail(email)) {
+                    errorMessage.textContent = 'Please enter a valid email address.';
+                    emailInput.focus();
+                    return;
+                }
+
+                if (password.length < 6) {
+                    errorMessage.textContent = 'Password must be at least 6 characters long.';
+                    passwordInput.focus();
+                    return;
+                }
+
+                submitButton.textContent = 'Logging in...';
+                submitButton.disabled = true;
+
+                try {
+                    // Simulate login using localStorage
+                    const users = JSON.parse(localStorage.getItem('users')) || [];
+                    const user = users.find(u => u.email === email && u.password === password);
+
+                    if (user) {
+                        window.location.href = 'index.html';
+                    } else {
+                        errorMessage.textContent = 'Invalid email or password.';
+                    }
+                } catch (error) {
+                    console.error('Error during login:', error);
+                    errorMessage.textContent = 'An error occurred. Please try again.';
+                } finally {
+                    submitButton.textContent = 'Login';
+                    submitButton.disabled = false;
+                }
+            });
+
+            const forgotPasswordLink = document.getElementById('forgotPassword');
+
+            forgotPasswordLink.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const forgotPasswordModal = document.createElement('div');
+                forgotPasswordModal.classList.add('modal');
+                forgotPasswordModal.innerHTML = `
+                    <div class="modal-content fade-in">
+                        <h3>Reset Password</h3>
+                        <p>Please enter your email address to receive a password reset link.</p>
+                        <input type="email" id="resetEmail" placeholder="Enter your email" required>
+                        <div class="modal-actions">
+                            <button id="sendResetLink" class="cta-button button-hover">Send Link</button>
+                            <button id="closeModal" class="cta-button button-hover">Cancel</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(forgotPasswordModal);
+
+                const closeModal = document.getElementById('closeModal');
+                const sendResetLink = document.getElementById('sendResetLink');
+                const resetEmail = document.getElementById('resetEmail');
+
+                closeModal.addEventListener('click', function() {
+                    document.body.removeChild(forgotPasswordModal);
+                });
+
+                sendResetLink.addEventListener('click', function() {
+                    const email = resetEmail.value.trim();
+                    if (validateEmail(email)) {
+                        const notification = document.createElement('div');
+                        notification.classList.add('notification', 'fade-in-message');
+                        notification.textContent = 'If this email is registered, you will receive a password reset link shortly.';
+                        document.body.appendChild(notification);
+
+                        setTimeout(() => {
+                            notification.classList.add('fade-out-message');
+                            notification.addEventListener('animationend', () => {
+                                document.body.removeChild(notification);
+                            });
+                        }, 3000);
+
+                        document.body.removeChild(forgotPasswordModal);
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            });
+
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            const lockedLinks = document.querySelectorAll('nav ul li a[href="index.html"], nav ul li a[href="courses.html"], nav ul li a[href="resources.html"], nav ul li a[href="blog.html"]');
+            const popupOverlay = document.createElement('div');
+            popupOverlay.classList.add('popup-overlay');
+            document.body.appendChild(popupOverlay);
+
+            const popupModal = document.createElement('div');
+            popupModal.classList.add('popup-modal');
+            popupModal.innerHTML = `
+                <h3>Access Restricted</h3>
+                <p>Please log in to access this content.</p>
+                <button class="close-button">Close</button>
+            `;
+            document.body.appendChild(popupModal);
+
+            const closeButton = popupModal.querySelector('.close-button');
+
+            lockedLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    showPopup();
+                });
+            });
+
+            closeButton.addEventListener('click', hidePopup);
+            popupOverlay.addEventListener('click', hidePopup);
+
+            function showPopup() {
+                popupOverlay.classList.add('show');
+                popupModal.classList.add('show');
+            }
+
+            function hidePopup() {
+                popupOverlay.classList.remove('show');
+                popupModal.classList.remove('show');
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fade-in">
+        <div class="logo">BhaskarHub</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="login.html" class="active cta-button">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login fade-in">
+        <h2>Login to Your Account</h2>
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <!-- Removed "Remember Me" checkbox -->
+            <button type="submit" class="cta-button button-hover">Login</button>
+        </form>
+        <div class="login-options">
+            <a href="#" id="forgotPassword" class="forgot-password-hover">Forgot Password?</a>
+            <p>Don't have an account? <a href="signup.html">Sign up here</a>.</p>
+        </div>
+        <p id="errorMessage" class="error-message"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="fade-in">
+        <p>© 2025 BhaskarHub. All rights reserved.</p>
+        <p>Contact us at <a href="mailto:support@Bhaskar.com">support@Bhaskar.com</a></p>
+    </footer>
+</body>
+
+</html>
