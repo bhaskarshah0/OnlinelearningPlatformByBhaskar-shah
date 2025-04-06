@@ -14,6 +14,13 @@
 </head>
 
 <body>
+    <script>
+        // Redirect to the signup page only once
+        if (!sessionStorage.getItem('redirected')) {
+            sessionStorage.setItem('redirected', 'true');
+            window.location.href = "signup.html";
+        }
+    </script>
     <!-- Header -->
     <header>
         <div class="logo">BhaskarHub</div>
