@@ -6,16 +6,8 @@ document.getElementById('logoutButton').addEventListener('click', function(e) {
     localStorage.removeItem('userData');
     document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     
-    // Correct redirect path (choose one option below)
-    
-    // Option 1: If login.html is in the same directory
+    // Redirect to login page
     window.location.href = 'login.html';
-    
-    // Option 2: If using a framework like Express with routes
-    // window.location.href = '/login';
-    
-    // Option 3: If in a subdirectory structure
-    // window.location.href = '../login.html';
 });
 
 // Get the "Get Started" button
@@ -39,3 +31,30 @@ getStartedBtn.addEventListener('click', (e) => {
         getStartedBtn.classList.remove('clicked');
     }, 500); // Match the duration of the animation
 });
+
+// Gamification logic
+let points = 1200;
+let badges = 5;
+let level = 3;
+
+function updateGamificationStats() {
+    document.getElementById('points').textContent = points;
+    document.getElementById('badges').textContent = badges;
+    document.getElementById('level').textContent = level;
+}
+
+// Example: Increment points and update stats
+function completeLesson() {
+    points += 100;
+    if (points % 500 === 0) {
+        badges += 1;
+    }
+    if (points % 1000 === 0) {
+        level += 1;
+    }
+    updateGamificationStats();
+}
+
+// Call this function to initialize stats on page load
+updateGamificationStats();
+
