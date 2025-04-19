@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - BhaskarHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #e67e22;
+        }
+
+        nav ul li a.active {
+            text-decoration: underline;
+        }
+
+        .user-testimonials {
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+
+        .user-testimonials h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .testimonial h4 {
+            margin-top: 10px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .feedback {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feedback h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .feedback p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #e67e22;
+            outline: none;
+        }
+
+        .cta-button {
+            background-color: #e67e22;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #d35400;
+            transform: scale(1.05);
+        }
+
+        .success-message {
+            font-size: 0.9rem;
+            color: #27ae60;
+            margin-top: 15px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .contact-info {
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .contact-info a {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #e67e22;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">BhaskarHub</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="feedback.html" class="active">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- User Testimonials Section -->
+    <section class="user-testimonials">
+        <h2>User Testimonials</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"BhaskarHub has completely transformed the way I learn. The courses are well-structured and easy to follow."</p>
+                <h4>- Sarah Johnson</h4>
+            </div>
+            <div class="testimonial">
+                <p>"The instructors are amazing, and the community is very supportive. Highly recommend BhaskarHub!"</p>
+                <h4>- Michael Lee</h4>
+            </div>
+            <div class="testimonial">
+                <p>"I was able to land my dream job thanks to the skills I learned here. Thank you, BhaskarHub!"</p>
+                <h4>- Emily Davis</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section class="feedback">
+        <h2>We Value Your Feedback</h2>
+        <p>Your feedback helps us improve and provide better services.</p>
+        <form id="feedbackForm" class="feedback-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Feedback</label>
+                <textarea id="message" rows="4" placeholder="Enter your feedback" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Submit</button>
+        </form>
+        <p id="feedbackMessage" class="success-message"></p>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="contact-info">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need support, feel free to reach out to us:</p>
+        <p>Email: <a href="mailto:support@bhaskarhub.com">support@bhaskarhub.com</a></p>
+        <p>Phone: +1-234-567-890</p>
+        <p>Address: 123 Learning Street, Knowledge City, EduLand</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 BhaskarHub. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="resources.html">Resources</a>
+            <a href="blog.html">Blog</a>
+            <a href="feedback.html">Feedback</a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            feedbackMessage.textContent = 'Thank you for your feedback!';
+            feedbackMessage.style.opacity = 1;
+            setTimeout(() => {
+                feedbackMessage.style.opacity = 0;
+                this.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
